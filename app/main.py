@@ -1,3 +1,9 @@
+from flask import Flask, request, render_template
+from extract_processor import formatContentToGoogleSheets
+
+
+app = Flask(__name__)
+
 
 """
 DESCRIPTION_DICT = {
@@ -12,41 +18,17 @@ DESCRIPTION_DICT = {
 }
 """
 
-def formatLineToGoogleSheets(row: str, monthShoulBe: int, person: str):
-    row, value = extractDataFromTail(row)
-    date, row = extractDataFromHead(row)
-    description = row
 
-    if description == 'SALDO DO DIA':
-        return
-    
-    day, month, *rest = date.split('/')
-
-    if int(month) != monthShoulBe:
-        return
-
-    direction = 'Entrada'
-    if value.startswith('-'):
-        direction = 'Saída'
-        value = value.removeprefix('-')
-
-    print(value, direction, '', day, 'Débito', 'Itaú', person, '', '', description, sep=';')
+@app.route("/", methods=["GET", "POST"])
+def home():
+    result = ''
+    if request.method == "POST":
+        month = int(request.form.get("month"))
+        person = request.form.get("person")
+        content = request.form.get("content")
+        result = formatContentToGoogleSheets(content, month, person)
+    return render_template("index.html", result=result)
 
 
-def extractDataFromHead(row: str) -> str:
-    parts = row.split(sep=' ', maxsplit=1)
-    return parts
-
-
-def extractDataFromTail(row: str) -> tuple:
-    parts = row.rsplit(sep=' ', maxsplit=1)
-    return parts
-
-
-file = "itau_extrato_nana_01_05_2025.txt"
-
-with open(file, "r", encoding="utf-8") as f:
-    linhas = f.readlines()
-    for linha in reversed(linhas):
-        formatLineToGoogleSheets(linha.strip(), 4, 'Nana')
-        
+if __name__ == "__main__":
+    app.run(debug=True, host="0.0.0.0")
