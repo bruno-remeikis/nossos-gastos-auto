@@ -1,3 +1,11 @@
 # Dockling
-docling
-accelerate
+#docling
+#accelerate
+
+# Other PDF Readers
+#tabula-py
+#pdfplumber
+
+# Google Sheets
+gspread
+oauth2client

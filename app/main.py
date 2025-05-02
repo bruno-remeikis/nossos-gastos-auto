@@ -1,27 +1,52 @@
-from docling.document_converter import DocumentConverter
 
-from markdown_reader import MarkdownReader
+"""
+DESCRIPTION_DICT = {
+    "COF APLICACAO CDB": "Cofrinho",
+    "COF RESGATE CDB": "Cofrinho",
+    "CACAU": "Cacau Show",
+    "UNIVERSIDAD": "Bolsa",
+    "SHPP": "Shopee",
+    "EXTRA": "ExtraBom",
+    "CARON": "Carone",
+    "IFD": "IFood",
+}
+"""
 
-print("Carregando arquivo...")
+def formatLineToGoogleSheets(row: str, monthShoulBe: int, person: str):
+    row, value = extractDataFromTail(row)
+    date, row = extractDataFromHead(row)
+    description = row
 
-source = "./itau_extrato_032025.pdf"
+    if description == 'SALDO DO DIA':
+        return
+    
+    day, month, *rest = date.split('/')
 
-converter = DocumentConverter()
-result = converter.convert(source)
-markdown = result.document.export_to_markdown()
+    if int(month) != monthShoulBe:
+        return
 
-print("Processando dados...")
+    direction = 'Entrada'
+    if value.startswith('-'):
+        direction = 'Saída'
+        value = value.removeprefix('-')
 
-reader = MarkdownReader(markdown)
-reader.goto("##")
-reader.goto_list()
-reader.prune_tail("##")
+    print(value, direction, '', day, 'Débito', 'Itaú', person, '', '', description, sep=';')
 
-reader.print()
 
-#for i in range(40):
-while True:
-    row = reader.get_row_as_array()
-    if row == None:
-        break
-    print(row)
+def extractDataFromHead(row: str) -> str:
+    parts = row.split(sep=' ', maxsplit=1)
+    return parts
+
+
+def extractDataFromTail(row: str) -> tuple:
+    parts = row.rsplit(sep=' ', maxsplit=1)
+    return parts
+
+
+file = "itau_extrato_nana_01_05_2025.txt"
+
+with open(file, "r", encoding="utf-8") as f:
+    linhas = f.readlines()
+    for linha in reversed(linhas):
+        formatLineToGoogleSheets(linha.strip(), 4, 'Nana')
+        
