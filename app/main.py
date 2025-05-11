@@ -5,20 +5,6 @@ from extract_processor import formatContentToGoogleSheets
 app = Flask(__name__)
 
 
-"""
-DESCRIPTION_DICT = {
-    "COF APLICACAO CDB": "Cofrinho",
-    "COF RESGATE CDB": "Cofrinho",
-    "CACAU": "Cacau Show",
-    "UNIVERSIDAD": "Bolsa",
-    "SHPP": "Shopee",
-    "EXTRA": "ExtraBom",
-    "CARON": "Carone",
-    "IFD": "IFood",
-}
-"""
-
-
 @app.route("/", methods=["GET", "POST"])
 def home():
     result = ''

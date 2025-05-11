@@ -1,0 +1,86 @@
+{
+    "TED 001.0038.BRUNO C R": {
+        "desc": "SoftExpert",
+        "type": "💰 Salário"
+    },
+    "UNIVERSIDAD": {
+        "desc": "Bolsa",
+        "type": "💰 Bolsa"
+    },
+    "COF APLICACAO CDB": {
+        "desc": "Cofrinho",
+        "type": "🔒 Guardado"
+    },
+    "COF RESGATE CDB": {
+        "desc": "Cofrinho",
+        "type": "🔒 Guardado"
+    },
+
+    "COMBINAQUI": {
+        "desc": "Combinaqui",
+        "type": "🔒Seguro"
+    },
+
+    "EXTRA": {
+        "desc": "ExtraBom: ?",
+        "type": "🛒 Supermercado"
+    },
+    "CARON": {
+        "desc": "Carone: ?",
+        "type": "🛒 Supermercado"
+    },
+    "MARKE": {
+        "desc": "São José: ?",
+        "type": "🛒 Supermercado"
+    },
+    "EMPOR": {
+        "desc": "Empório Ferreira: granel",
+        "type": "🛒 Supermercado"
+    },
+    "DELIC": {
+        "desc": "Delicias do Trigo",
+        "type": "🥖 Padaria"
+    },
+    "IFD": {
+        "desc": "Ifood: ?",
+        "type": "🍔 Comer fora"
+    },
+    "PAY -UNIVE": {
+        "type": "🎓 Lanche (facul)"
+    },
+    "MP S": {
+        "desc": "Sonho Gelado",
+        "type": "🍫 Besteirinha"
+    },
+    "PAY CACAU": {
+        "desc": "Cacau Show",
+        "type": "🍫 Besteirinha"
+    },
+    "PAY DGUST": {
+        "desc": "Dgust",
+        "type": "🍫 Besteirinha"
+    },
+
+    "DROGA": {
+        "desc": "Drogasil: ?",
+        "type": "💊 Farmacia"
+    },
+    "QRS Raia Drogas": {
+        "desc": "Drogasil: ?",
+        "type": "💊 Farmacia"
+    },
+
+    "SHPP": {
+        "desc": "Shopee",
+        "type": "🛒 Shopee"
+    },
+
+    "MON P": {
+        "desc": "Mon Pet",
+        "type": "🐱Dos meninos"
+    },
+
+    "AMERI": {
+        "desc": "Americanas: ?"
+    }
+}
